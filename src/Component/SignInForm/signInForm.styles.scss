@@ -1,0 +1,21 @@
+
+.sign-in-form-container{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+
+  p{
+    color:grey;
+    font-size: smaller
+  }
+  
+  h2{
+    margin: 10px 0;
+  }
+}
+
+.button-container1{
+  width: 100%;
+  display:flex;
+  justify-content:  space-between;
+}
