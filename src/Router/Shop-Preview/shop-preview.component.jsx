@@ -1,8 +1,11 @@
 import ProductPreview from '../../Component/ProductsPreview/products-preview.component'
-import { useContext, Fragment } from 'react'
-import { ProductContext } from '../../Context/product.context'
+import { useSelector } from 'react-redux'
+import { Fragment } from 'react'
+import { selectProducts } from '../../Store/products/products.selector'
+
 const ShopPreview = () => {
-    const { products } = useContext(ProductContext)
+    const products=useSelector(selectProducts)
+
     return (
         <Fragment>
             {Object.keys(products).map(title => {

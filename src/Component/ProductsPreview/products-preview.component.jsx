@@ -2,7 +2,6 @@ import ShopCard from "../ShopCard/shop.component"
 import { Link } from "react-router-dom"
 import './category-preview.styles.scss'
 const ProductPreview=({products, title})=>{
-    console.log(products)
     return(
         <div className="category-preview-container"> 
             <h1 ><Link  className='title' to={title}>{title}</Link></h1>

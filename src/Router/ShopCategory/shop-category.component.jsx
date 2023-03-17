@@ -3,11 +3,13 @@ import { Fragment, useContext, useEffect, useState } from "react"
 import { ProductContext } from "../../Context/product.context"
 import ShopCard from "../../Component/ShopCard/shop.component"
 import './shop-category.styles.scss'
+import { useSelector } from "react-redux"
+import { selectProducts } from "../../Store/products/products.selector"
+
 const ShopCategory = () => {
+    const products=useSelector(selectProducts)
     const { category } = useParams()
-    const { products } = useContext(ProductContext)
     const [currentProducts, setcurrentProducts] = useState(products[category])
-    console.log({ 1: (products==undefined) }, { 2: currentProducts })
     useEffect(() => {
         setcurrentProducts(products[category])
     }, [products, category])
