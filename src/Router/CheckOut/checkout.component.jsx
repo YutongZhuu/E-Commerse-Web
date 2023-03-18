@@ -1,46 +1,23 @@
-import { useContext } from "react"
-import { ProductContext } from "../../Context/product.context"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCartItems } from "../../Store/cart/cart.selector"
+import { addCartItems, reduceCartItem, cancelCartItem } from "../../Store/cart/cart.action"
 import CheckOutItem from "../../Component/CheckOutItem/check-out-item.component"
 import './checkout.styles.scss'
+
 const CheckOut = () => {
-    const { selected_products, setselected_products } = useContext(ProductContext)
-
-    const cancelHandler = (product) => {
-        const modified_selected_products = selected_products.filter((productFind) => {
-            if (product.id != productFind.id) {
-                return product
-            }
-        })
-        setselected_products(modified_selected_products)
-    }
-    const reduceHandler = (product) => {
-
-        const modified_selected_products = selected_products.map((productFind) => {
-            if (product.id == productFind.id) {
-                return { ...product, count: product.count - 1 }
-            } else {
-                return productFind
-            }
-
-        })
-        if (product.count-1 == 0)
-            cancelHandler(product)
-        else
-            setselected_products(modified_selected_products)
+    const selected_products = useSelector(selectCartItems)
+    const dispatch=useDispatch()
+    const incramentHandler=(product)=>{
+        dispatch(addCartItems(selected_products, product))
     }
 
-    const incramentHandler = (product) => {
-         const modified_selected_products = selected_products.map((productFind) => {
-            if (product.id == productFind.id) {
-                return { ...product, count: product.count + 1 }
-            } else {
-                return productFind
-            }
-        })
-        setselected_products(modified_selected_products)
-
+    const reduceHandler=(product)=>{
+        dispatch(reduceCartItem(selected_products, product))
     }
 
+    const cancelHandler=(product)=>{
+        dispatch(cancelCartItem(selected_products, product))
+    }
 
     let total = 0
     if (selected_products.length) {

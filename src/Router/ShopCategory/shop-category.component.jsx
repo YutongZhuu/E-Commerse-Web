@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom"
 import { Fragment, useContext, useEffect, useState } from "react"
-import { ProductContext } from "../../Context/product.context"
 import ShopCard from "../../Component/ShopCard/shop.component"
 import './shop-category.styles.scss'
 import { useSelector } from "react-redux"

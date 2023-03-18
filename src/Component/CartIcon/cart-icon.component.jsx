@@ -1,13 +1,11 @@
 import { ReactComponent as ShoppingBag } from '../../Assets/shopping-bag.svg'
-// import { useContext } from 'react'
-// import { ProductContext } from '../../Context/product.context'
 import { useSelector } from 'react-redux'
 import { selectCartItems } from '../../Store/cart/cart.selector'
 import './cart-icon.styles.scss'
+
+
 const ShopIcon=({onClick})=>{
     const selected_products=useSelector(selectCartItems)
-    // console.log({selected_products: selected_products})
-    // const {selected_products} =useContext(ProductContext)
     const items_array=selected_products.map((product)=>{
         return(product.count)
     })

@@ -1,4 +1,4 @@
-import { CartActionTypes } from "../../Context/product.context";
+import { CartActionTypes } from "./cart.action-type";
 
 const INITIAL_STATE = {
     cartItems: [],
@@ -9,12 +9,12 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
     const { type, payload } = action;
 
     switch (type) {
-        case CartActionTypes.Set_Selected_Products:
+        case CartActionTypes.SET_CART_ITEMS:
             return {
                 ...state,
                 cartItems: payload
             }
-        case CartActionTypes.Set_Dropdown:
+        case CartActionTypes.SET_CURRENT_CART_STATUS:
             return {
                 ...state,
                 cartDrowdown: payload
